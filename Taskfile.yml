@@ -1,0 +1,38 @@
+version: '3'
+
+tasks:
+  plan:
+    desc: terraspace plan -- STACK
+    cmds:
+      - terraspace fmt
+      - tflint app/stacks/{{.CLI_ARGS}}
+      - tfsec app/stacks/{{.CLI_ARGS}}
+      - terraspace up {{.CLI_ARGS}}
+
+  up:
+    desc: terraspace up -- STACK
+    cmds:
+      - terraspace fmt
+      - tflint app/stacks/{{.CLI_ARGS}}
+      - tfsec app/stacks/{{.CLI_ARGS}}
+      - terraspace up {{.CLI_ARGS}}
+
+  seed:
+    desc: terraspace seed -- ENV
+    cmds:
+      - terraspace seed {{.CLI_ARGS}}
+
+  test:
+    desc: terraspace test
+    cmds:
+      - terraspace test
+
+  bundle:
+    desc: terraspace bundle (to download remote modules)
+    cmds:
+      - terraspace bundle
+
+  down:
+    desc: terraspace down -- STACK (to destroy the stack)
+    cmds:
+      - terraspace down {{.CLI_ARGS}}
